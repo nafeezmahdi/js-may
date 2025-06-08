@@ -10,7 +10,7 @@
 
 // Note
 // this is not a variable. It is a keyword. You cannot change the value of this.
-
+//
 // this in a Method
 // When used in an object method, this refers to the object.
 const person = {

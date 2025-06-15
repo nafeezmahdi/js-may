@@ -1,0 +1,160 @@
+JavaScript Interview Questions and Answers: Sync, Async, Promises, Async-Await
+
+Basic Level
+
+1. What is the difference between synchronous and asynchronous JavaScript?
+
+Synchronous code executes line by line and blocks further execution until the current line finishes.
+
+Asynchronous code does not block further execution and runs in the background (e.g., setTimeout, fetch).
+
+2. What is the event loop in JavaScript?
+
+The event loop is a mechanism that handles asynchronous callbacks. It checks the call stack and task queues to determine what to execute next.
+
+3. Explain the call stack, Web APIs, and callback queue.
+
+Call Stack: Executes function calls in a LIFO order.
+
+Web APIs: Browser-provided features (e.g., timers, DOM events).
+
+Callback Queue: Stores callbacks that are ready to be pushed to the call stack.
+
+4. What is a callback function? Provide an example.
+
+A callback is a function passed to another function to be called later.
+
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+greet("Alice", () => console.log("Callback executed"));
+
+5. What is a Promise?
+
+A Promise represents a value that may be available now, later, or never. It avoids callback hell.
+
+6. What are the states of a Promise?
+
+Pending: Initial state.
+
+Fulfilled: Operation successful.
+
+Rejected: Operation failed.
+
+7. How is setTimeout asynchronous?
+
+It uses Web APIs to delay execution and queues the callback after the delay.
+
+8. Difference between setTimeout and setInterval?
+
+setTimeout runs once after delay.
+
+setInterval runs repeatedly at intervals.
+
+9. What happens when you call .then() on a Promise?
+
+It registers a callback to be executed when the Promise resolves.
+
+10. What does Promise.resolve() and Promise.reject() do?
+
+They return a Promise that is already resolved or rejected respectively.
+
+Intermediate Level
+
+11. Difference between callbacks and Promises?
+
+Promises provide cleaner, more manageable code than nested callbacks.
+
+12. How does chaining work with Promises?
+
+Each .then() returns a new Promise allowing chaining of multiple async operations.
+
+13. Advantages of Promises?
+
+Avoid callback hell, better error handling, readable chaining.
+
+14. What is Promise.all() and Promise.race()?
+
+Promise.all(): Resolves when all Promises resolve, rejects on any failure.
+
+Promise.race(): Resolves/rejects when the first Promise resolves/rejects.
+
+15. What is async/await?
+
+Syntactic sugar over Promises to write async code that looks synchronous.
+
+16. How does async/await handle errors?
+
+Use try...catch blocks to catch errors just like synchronous code.
+
+17. What happens if you forget to use await in an async function?
+
+It returns a Promise instead of the actual result.
+
+18. Can async/await be used with non-Promise functions?
+
+No, await only works with Promises.
+
+19. Microtasks vs. Macrotasks?
+
+Microtasks (e.g., Promises) have higher priority and execute before macrotasks (e.g., setTimeout).
+
+20. Output of mixed async code?
+
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+Promise.resolve().then(() => console.log("3"));
+console.log("4");
+
+Output: 1, 4, 3, 2
+
+Advanced/Tricky Questions
+
+21. How to implement sleep function?
+
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+22. Can async functions run in parallel?
+
+Yes, by not awaiting immediately:
+
+const p1 = fetch("/api1");
+const p2 = fetch("/api2");
+const res1 = await p1;
+const res2 = await p2;
+
+23. How to catch multiple Promise errors in Promise.all()?
+
+Wrap each Promise with .catch():
+
+Promise.all([p1.catch(e => e), p2.catch(e => e)])
+
+24. Difference between await Promise.all and sequential awaits?
+
+Promise.all() runs in parallel, sequential await runs one after another.
+
+25. What happens if await is used outside async function?
+
+SyntaxError: await is only valid in async functions.
+
+26. How to retry a failed async operation?
+
+async function retry(fn, times) {
+  for (let i = 0; i < times; i++) {
+    try {
+      return await fn();
+    } catch (e) {
+      if (i === times - 1) throw e;
+    }
+  }
+}
+
+27. Is async/await syntactic sugar?
+
+Yes, it’s built on top of Promises.
+
+28. Convert callback to Promise?
+
+function oldFunc(cb) { setTimeout(() => cb(null, "done"), 1000); }
+const promiseFunc = () => new Promise((res, rej) => oldFunc((e, r) => e ? rej(e) : res(r)));

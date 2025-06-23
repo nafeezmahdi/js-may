@@ -12,3 +12,16 @@
 // 🎯 Expected Output:
 // { name: "Carol", details: { isActive: true } }
 // ✅ Challenge: Solve this using .find() only.
+
+const users = [
+  { name: "Alice", details: { isActive: false } },
+  { name: "Bob", details: { isActive: false } },
+  { name: "Carol", details: { isActive: true } },
+];
+
+const result = users.find((currentValue) => {
+  console.log(currentValue.details.isActive);
+  return currentValue.details.isActive === true;
+});
+
+console.log(result);

@@ -6,24 +6,22 @@
 // Using let
 // Using const
 
-// In this first example, x, y, and z are undeclared variables.
-
-// They are automatically declared when first used:
-
+// Automatically
 // Example
 
 x = 5;
 y = 6;
 z = x + y;
-console.log(z);
+// console.log(z);
+// In this first example x, y, and z are undeclared variables.
+// They are automatically declared when first used:
 
 // Example using var
 
 var x = 5;
 var y = 7;
 var z = x + y;
-
-console.log(z);
+// console.log(z);
 
 // Note
 // The var keyword was used in all JavaScript code from 1995 to 2015.
@@ -31,22 +29,25 @@ console.log(z);
 // The var keyword should only be used in code written for older browsers.
 
 // Example using let
+
 let a = 5;
 let b = 8;
 let c = a + b;
-console.log(c);
+// console.log(c);
 
 // Example using const
+
 const aa = 5;
 const bb = 9;
 const ab = aa + bb;
-console.log(ab);
+// console.log(ab);
 
 // Mixed Example
+
 const price1 = 5;
 const price2 = 6;
 let total = price1 + price2;
-console.log(total);
+// console.log(total);
 
 // The two variables price1 and price2 are declared with the const keyword.
 // These are constant values and cannot be changed.
@@ -102,12 +103,14 @@ let person2 = "John Doe",
 let carName2;
 
 // Re-Declaring JavaScript Variables
-// If you re-declare a JavaScript variable declared with var, it will not lose its value.
-// The variable carName3 will still have the value "Volvo" after the execution of these statements:
 
 // Example
 var carName3 = "Volvo";
 var carName3;
+// console.log(carName3);
+
+// If you re-declare a JavaScript variable declared with var, it will not lose its value.
+// The variable carName3 will still have the value "Volvo" after the execution of these statements:
 
 // Note
 // You cannot re-declare a variable declared with let or const.

@@ -14,8 +14,8 @@ const total = numbers.reduce((accumulator, currentValue, index, array) => {
 // The second argument to reduce() is the initial value of the accumulator.
 // In this case, it's 0, so the summation starts at 0.
 
-console.log("✅ Total Sum (with steps):", total);
-console.log("------------------------------------------------");
+// console.log("✅ Total Sum (with steps):", total);
+// console.log("------------------------------------------------");
 
 // ✅ 2. Simple Sum of numbers
 const nums = [1, 2, 3, 4, 5];
@@ -35,7 +35,13 @@ const flat = nestedArray.reduce((acc, val) => acc.concat(val), []);
 console.log("3️⃣ Flattened Array:", flat);
 // Merges all sub-arrays into one flat array.
 // acc starts as an empty array [].
+// acc.concat(val) joins the current sub-array (val) into the accumulator (acc).
 // Each sub-array (val) is concatenated.
+// Step-by-step:
+// Start: acc = []
+// 1st iteration: [] .concat([1, 2]) → [1, 2]
+// 2nd iteration: [1, 2] .concat([3, 4]) → [1, 2, 3, 4]
+// 3rd iteration: [1, 2, 3, 4] .concat([5]) → [1, 2, 3, 4, 5]
 
 // ✅ 5. Counting occurrences
 const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];

@@ -17,14 +17,28 @@
 }
 // x can NOT be used here
 
+// The behavior of const is very similar to let in terms of block scope, but with one key difference: const is used to declare constants (values that cannot be reassigned).
+// Example
+{
+  const x = 10;
+}
+// x can NOT be used here
+
+// Variables declared with const are block-scoped, meaning they are only accessible inside the block where they are defined.
+// x is only accessible inside the block because const creates a block-scoped variable. Outside the block, x is undefined.
+// Although const prevents reassignment of the variable, it doesn't make the value itself immutable. This means you can still modify the properties of an object or modify the contents of an array.
+
 // Variables declared with the var keyword can NOT have block scope.
-// Variables declared inside a { } block can be accessed from outside the block.
+// Variables declared with the var keyword inside a { } block can be accessed from outside the block.
 
 // Example
 {
   var x = 2;
 }
+// console.log(x);
 // x CAN be used here
+// var doesn't support block scope — it has Function Scope
+// var declared inside a block is accessible outside the block.
 
 // Local Scope
 // Variables declared within a JavaScript function, are LOCAL to the function:
@@ -49,24 +63,26 @@ function myFunction() {
 // They all have Function Scope:
 
 function myFunction() {
-  var carName = "Volvo"; // Function Scope
+  var carName2 = "Volvo"; // Function Scope
+}
+// console.log(carName2);
+
+function myFunction() {
+  let carName3 = "Volvo"; // Function Scope
 }
 function myFunction() {
-  let carName = "Volvo"; // Function Scope
-}
-function myFunction() {
-  const carName = "Volvo"; // Function Scope
+  const carName4 = "Volvo"; // Function Scope
 }
 
 // Global JavaScript Variables
 // A variable declared outside a function, becomes GLOBAL.
 
 // Example
-let carName = "Volvo";
-// code here can use carName
+let carName5 = "Volvo";
+// code here can use carName5
 
 function myFunction() {
-  // code here can also use carName
+  // code here can also use carName5
 }
 
 // A global variable has Global Scope:
@@ -78,30 +94,30 @@ function myFunction() {
 // Variables declared with var, let and const are quite similar when declared outside a block.
 // They all have Global Scope:
 
-var x = 2; // Global scope
-let x = 2; // Global scope
-const x = 2; // Global scope
+// var x = 2; // Global scope
+// let x = 2; // Global scope
+// const x = 2; // Global scope
 
 // JavaScript Variables
 // In JavaScript, objects and functions are also variables.
 // Scope determines the accessibility of variables, objects, and functions from different parts of the code.
 
 // Automatically Global
-// If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
-// This code example will declare a global variable carName, even if the value is assigned inside a function.
-
 // Example
 myFunction();
 
-// code here can use carName
+// code here can use carName6
+// console.log(carName6);
 
 function myFunction() {
-  carName = "Volvo";
+  carName6 = "Volvo Car";
 }
+
+// If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+// This code example will declare a global variable carName6, even if the value is assigned inside a function.
 
 // Strict Mode
 // All modern browsers support running JavaScript in "Strict Mode".
-// You will learn more about how to use strict mode in a later chapter of this tutorial.
 // In "Strict Mode", undeclared variables are not automatically global.
 
 // Global Variables in HTML
@@ -111,14 +127,14 @@ function myFunction() {
 // Global variables defined with the var keyword belong to the window object:
 
 // Example
-var carName1 = "Volvo";
-// code here can use window.carName
+var carName7 = "Volvo";
+// code here can use window.carName7
 
 // Global variables defined with the let keyword do not belong to the window object:
 
 // Example
-let carName2 = "Volvo";
-// code here can not use window.carName
+let carName8 = "Volvo";
+// code here can not use window.carName8
 
 // Warning
 // Do NOT create global variables unless you intend to.

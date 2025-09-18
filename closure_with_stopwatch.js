@@ -2,10 +2,12 @@
 
 function stopWatch() {
   var startTime = Date.now(); // Capture the current time (in ms) when stopWatch is called
+  console.log(startTime);
 
   // Define a nested function that logs the elapsed time
   function getDelay() {
     console.log(Date.now() - startTime); // Calculate and print time difference
+    console.log(Date.now());
   }
 
   return getDelay;
